@@ -1,34 +1,27 @@
+// importo il globalcontext per avere dati glovbali accenssibili da ogni componente discendente di esso
+import GlobalContext from './contexts/GlobalContext'
+// importo i componenti per impostare le rotte
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { BASE_URI } from "./config"
-import HomePage from "./pages/HomePage"
-import About from "./pages/About"
+// importo gli hooks custom per fetch posts e category
+import usePosts from "./hooks/usePosts"
+import useCategory from "./hooks/useCategory"
+
+// importo il componente layout per vaere un layout di fefault per tutte le rotte che sono al suo interno 
 import DefaultLayout from "./layouts/DefaultLayout"
+// importo tutti i componenti che costituiscono le pagine del mio applicativo
+import HomePage from "./pages/HomePage"
 import PostsPage from "./pages/PostsPage"
 import PostsShow from './pages/Posts/Show'
 import PostCreate from './pages/Posts/Create'
+import About from "./pages/About"
 import NotFound from "./pages/NotFound"
-import GlobalContext from './contexts/GlobalContext'
+
 
 
 function App() {
-  const [posts, setPosts] = useState([])
-  function fetchPosts() {
-    axios.get(`${BASE_URI}/posts`)
-      .then(res => setPosts(res.data))
-      .catch(err => console.log(err))
-  }
-  useEffect(() => fetchPosts(), [])
-
-
-  // const [category, setCategory] = useState([])
-  function fetchCategory() {
-    axios.get(`${BASE_URI}/category`)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err))
-  }
-  useEffect(() => fetchCategory(), [])
+  const posts = usePosts()
+  const category = useCategory()
+  console.log(category)
 
   return (
     <>

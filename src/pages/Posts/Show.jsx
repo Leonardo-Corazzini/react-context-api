@@ -24,9 +24,6 @@ export default function Show() {
     return (
         <>
             <div className="container">
-                <button onClick={() => navigate('/')}>
-                    Torna alla Home
-                </button>
                 <button onClick={() => navigate(-1)}>
                     Indietro
                 </button>

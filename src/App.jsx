@@ -21,6 +21,15 @@ function App() {
   }
   useEffect(() => fetchPosts(), [])
 
+
+  // const [category, setCategory] = useState([])
+  function fetchCategory() {
+    axios.get(`${BASE_URI}/category`)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+  }
+  useEffect(() => fetchCategory(), [])
+
   return (
     <>
       <GlobalContext.Provider value={{ posts }}>

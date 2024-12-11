@@ -3,6 +3,7 @@ import GlobalContext from "../contexts/GlobalContext"
 import Card from './Card/Card'
 export default function PostList() {
     const { posts } = useContext(GlobalContext)
+
     return (
         <div className="row">
             {posts && posts.map(post => (

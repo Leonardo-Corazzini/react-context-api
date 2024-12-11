@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <GlobalContext.Provider value={posts}>
+      <GlobalContext.Provider value={{ posts }}>
         <BrowserRouter>
           <Routes>
             <Route element={<DefaultLayout />}>
